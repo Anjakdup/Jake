@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> </title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+  <div class="game">
+    <h1 class="text-center">POINTS</h1>
+    <h1 class="points text-center">0</h1>
+
+    <div class="bg-dark position-absolute mt-" style="height: 250px; width: 250px; margin-left: 150px; margin-bottom: 150px;"></div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-3 border" style="height: 300px; background: #fbbb11">
+          <img class="jakethedog w-75" src="jake.png" alt="" style="display: none">
+          <img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+        </div>
+        <div class="col-3 border" style="height: 300px; background: #fbbb11">
+          <img class="jakethedog" src="jake.png"  alt="" style="display: none">
+          <img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+        </div>
+        <div class="col-3 border" style="height: 300px; background: #fbbb11">
+          <img class="jakethedog" src="jake.png"  alt="" style="display: none">
+          <img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+        </div>
+        <div class="col-3 border" style="height: 300px; background: #fbbb11">
+          <img class="jakethedog" src="jake.png"  alt="" style="display: none">
+          <img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 border" style="height: 300px; background: #fbbb11">
+          <img class="jakethedog" src="jake.png" alt="" style="display: none">
+          <img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+        </div>
+        <div class="col-3 border" style="height: 300px; background: #fbbb11">
+          <img class="jakethedog" src="jake.png"  alt="" style="display: none">
+          <img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+        </div>
+        <div class="col-3 border" style="height: 300px; background: #fbbb11">
+          <img class="jakethedog" src="jake.png"  alt="" style="display: none">
+          <img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+        </div>
+        <div class="col-3 border" style="height: 300px; background: #fbbb11">
+          <img class="jakethedog" src="jake.png"  alt="" style="display: none">
+          <img class="iceking w-75" src="Ice_King.png" alt="" style="display: none">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    let scores = 0; 
+    let iceking = document.querySelectorAll('.iceking');
+    let jake = document.querySelectorAll('.jakethedog');
+
+
+//JakeDaDog
+    let fonc = function() {
+    let rand = Math.random()*8
+    let round = Math.round(rand)
+
+      jake[round].style.display= "block";
+      let restart = function(){ 
+        jake[round].style.display = "none"; 
+
+      }
+      setTimeout(restart,1500)
+    }
+    let jakedog = setInterval(fonc,1000)
+
+    for(let index = 0; index<4; index = index + 1){
+      jake[index].onclick = function(){ 
+        scores = scores + 150;
+
+      document.querySelector('.points').innerHTML = scores;       
+
+      jake[index].style.display = "none";
+      }
+   }
+//IceDaKing
+   let fanc = function(){
+    let rand1 = Math.random()*8
+    let round1 = Math.round(rand1)
+
+
+    iceking[round1].style.display= "block";
+    let reboot = function(){
+      iceking[round1].style.display = "none";
+    }
+      setTimeout(reboot,800)
+
+   }
+   let king = setInterval(fanc,2000)
+
+   for(let index = 0; index<4; index = index + 1){
+    iceking[index].style.display= "none";
+
+      iceking[index].onclick = function(){ 
+        scores = scores - 50;
+        document.querySelector('.points').innerHTML = scores;
+        jake[index].style.display = "none";
+      }
+    }
+
+let timeing = function(){
+clearInterval(jakedog);
+clearInterval(king);
+  if (  scores >= 100 ) { 
+    alert("You Win");
+  }
+  else {
+    alert('You lose');
+  }
+
+}
+
+setTimeout(timeing, 10000)
+
+
+    
+  </script>
+</body>
+</html>
